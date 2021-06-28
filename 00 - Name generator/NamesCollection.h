@@ -24,5 +24,6 @@ public:
 	~NamesCollection() {}
 	
 	void printNames(const std::string& namePart);
+	void generate(const short amountToGenerate, const bool ifMiddle);
 };
 

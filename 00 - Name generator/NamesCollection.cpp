@@ -2,6 +2,7 @@
 #include <fstream>
 #include <sstream>
 #include <iostream>
+#include <random>
 
 void NamesCollection::printFirstNames()
 {
@@ -98,4 +99,27 @@ void NamesCollection::printNames(const std::string& namePart)
 	if (namePart == "firstNames") printFirstNames();
 	else if (namePart == "middleNames") printMiddleNames();
 	else if (namePart == "lastNames") printLastNames();
+}
+
+void NamesCollection::generate(const short amountToGenerate, const bool ifMiddle)
+{
+	std::default_random_engine generator;
+	std::uniform_int_distribution<int> firstNameDistribution(0, firstNamesCollection.size() - 1);
+	std::uniform_int_distribution<int> middleNameDistribution(0, middleNamesCollection.size() - 1);
+	std::uniform_int_distribution<int> lastNameDistribution(0, lastNamesCollection.size() - 1);
+	if (ifMiddle)
+	{
+		for (size_t i = 0; i < amountToGenerate; i++)
+		{
+			std::cout << firstNamesCollection[firstNameDistribution(generator)].name << " " << middleNamesCollection[middleNameDistribution(generator)].name <<
+				" " << lastNamesCollection[lastNameDistribution(generator)].name << "\n";
+		}
+	}
+	else
+	{
+		for (size_t i = 0; i < amountToGenerate; i++)
+		{
+			std::cout << firstNamesCollection[firstNameDistribution(generator)].name << " " << lastNamesCollection[lastNameDistribution(generator)].name << "\n";
+		}
+	}
 }

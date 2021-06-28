@@ -3,7 +3,7 @@
 int main()
 {
     NamesCollection collection;
-    collection.printNames("lastNames");
+    collection.generate(5, true);
     return 0;
 }
 

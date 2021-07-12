@@ -3,7 +3,8 @@
 int main()
 {
     String myString("some string");
-    //possible inputs: string, reversed, randomized
+
+    //possible arguments: string, reversed, randomized
     myString.print("randomized");
     return 0;
 }

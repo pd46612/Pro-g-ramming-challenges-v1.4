@@ -17,5 +17,8 @@ public:
 
 private:
     Ui::Calculator *ui;
+
+    QString displayText;
+    double result;
 };
 #endif // CALCULATOR_H

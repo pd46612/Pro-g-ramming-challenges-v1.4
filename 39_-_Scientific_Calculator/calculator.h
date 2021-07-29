@@ -15,10 +15,34 @@ public:
     Calculator(QWidget *parent = nullptr);
     ~Calculator();
 
+private slots:
+    void on_button_1_clicked();
+    void on_button_2_clicked();
+    void on_button_3_clicked();
+    void on_button_4_clicked();
+    void on_button_5_clicked();
+    void on_button_6_clicked();
+    void on_button_7_clicked();
+    void on_button_8_clicked();
+    void on_button_9_clicked();
+    void on_button_0_clicked();
+    void on_button_dot_clicked();
+    void on_button_equals_clicked();
+    void on_button_sinus_clicked();
+    void on_button_cosinus_clicked();
+    void on_button_tanges_clicked();
+    void on_button_rightBracket_clicked();
+
 private:
     Ui::Calculator *ui;
 
-    QString displayText;
+    QString displayText = "0";
+    double varLeft;
+    double varRight;
     double result;
+
+    void updateDisplay();
+    bool isDisplayFull();
+    bool isDisplayZero();
 };
 #endif // CALCULATOR_H

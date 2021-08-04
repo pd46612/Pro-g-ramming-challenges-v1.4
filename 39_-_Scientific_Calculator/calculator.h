@@ -32,13 +32,19 @@ private slots:
     void on_button_cosinus_clicked();
     void on_button_tanges_clicked();
     void on_button_rightBracket_clicked();
+    void on_button_log2_clicked();
+    void on_button_log10_clicked();
+    void on_button_C_clicked();
+
+    void on_button_plus_clicked();
 
 private:
     Ui::Calculator *ui;
 
     QString displayText = "0";
-    double varLeft;
-    double varRight;
+    QString operation = "";
+    double argLeft = -99999;
+    double argRight = -99999;
     double result;
 
     void updateDisplay();

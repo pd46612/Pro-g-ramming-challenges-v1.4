@@ -28,7 +28,7 @@ bool Calculator::isDisplayFull()
 
 bool Calculator::isDisplayZero()
 {
-    if (displayText == '0') return true;
+    if (displayText == '0' || displayText == "nan") return true;
     else return false;
 }
 
@@ -186,6 +186,14 @@ void Calculator::on_button_equals_clicked()
         result = 0;
         updateDisplay();
     }
+    else if(operation == "add")
+    {
+        argRight = displayText.toDouble();
+        result = argLeft + argRight;
+        displayText = QString::number(result);
+        result = 0;
+        updateDisplay();
+    }
 }
 
 void Calculator::on_button_sinus_clicked()
@@ -212,6 +220,46 @@ void Calculator::on_button_rightBracket_clicked()
     {
         displayText = displayText + ")";
         updateDisplay();
+    }
+}
+
+void Calculator::on_button_log2_clicked()
+{
+    result = log2(displayText.toDouble());
+    displayText = QString::number(result);
+    result = 0;
+    updateDisplay();
+}
+
+
+void Calculator::on_button_log10_clicked()
+{
+    result = log10(displayText.toDouble());
+    displayText = QString::number(result);
+    result = 0;
+    updateDisplay();
+}
+
+void Calculator::on_button_C_clicked()
+{
+    displayText = "0";
+    updateDisplay();
+    result = 0;
+    operation = "";
+    argLeft = -99999;
+    argRight = -99999;
+}
+
+void Calculator::on_button_plus_clicked()
+{
+    if(ui->display->text() == "nan" || argLeft == -99999)
+        argLeft = 0.0;
+    else
+    {
+        argLeft = displayText.toDouble();
+        displayText = "0";
+        updateDisplay();
+        operation = "add";
     }
 }
 

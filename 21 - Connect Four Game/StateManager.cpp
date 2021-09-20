@@ -38,11 +38,13 @@ void Engine::StateManager::procesStateChange()
 			m_stateStack.pop();
 			m_replace = false;
 		}
-		if (m_stateStack.empty())
+		if (!m_stateStack.empty())
 		{
 			m_stateStack.top()->Pause();
 		}
 		m_stateStack.push(std::move(m_newState));
+		m_stateStack.top()->initialize();
+		m_stateStack.top()->Start();
 		m_add = false;
 	}
 }

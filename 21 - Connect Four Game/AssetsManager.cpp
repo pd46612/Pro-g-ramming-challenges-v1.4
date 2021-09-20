@@ -11,7 +11,7 @@ Engine::AssetsManager::~AssetsManager()
 void Engine::AssetsManager::addTexture(int id, const std::string& filePath, bool isRepeated)
 {
 	auto texture = std::make_unique<sf::Texture>();
-	if (!texture->loadFromFile(filePath))
+	if (texture->loadFromFile(filePath))
 	{
 		texture->setRepeated(isRepeated);
 		m_textures[id] = std::move(texture);
@@ -21,7 +21,7 @@ void Engine::AssetsManager::addTexture(int id, const std::string& filePath, bool
 void Engine::AssetsManager::addFont(int id, const std::string& filePath)
 {
 	auto font = std::make_unique<sf::Font>();
-	if (!font->loadFromFile(filePath))
+	if (font->loadFromFile(filePath))
 	{
 		m_fonts[id] = std::move(font);
 	}
